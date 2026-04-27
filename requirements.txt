@@ -1,0 +1,14 @@
+streamlit==1.32.0
+pandas
+numpy
+scikit-learn
+xgboost
+nltk
+tldextract
+plotly
+joblib
+scipy
+beautifulsoup4
+imbalanced-learn
+wordcloud
+google-generativeai

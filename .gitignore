@@ -1,0 +1,7 @@
+secrets.toml
+data/raw/
+data/processed/
+notebooks/
+__pycache__/
+*.pyc
+.env
