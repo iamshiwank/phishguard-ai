@@ -6,7 +6,7 @@
 ![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)
 ![Status](https://img.shields.io/badge/Status-Complete-green)
 
-> B.Tech Computer Science — Final Year Project  
+  
 > AI-powered system that detects phishing emails in real time using
 > machine learning and 40+ engineered security features.
 
@@ -70,36 +70,36 @@ as the production model based on highest F1-Score.
 
 | Model | Precision | Recall | F1-Score | ROC-AUC |
 |-------|-----------|--------|----------|---------|
-| Logistic Regression | [YOUR VALUE]% | [YOUR VALUE]% | [YOUR VALUE]% | [YOUR VALUE]% |
-| Random Forest | [YOUR VALUE]% | [YOUR VALUE]% | [YOUR VALUE]% | [YOUR VALUE]% |
-| Gradient Boosting | [YOUR VALUE]% | [YOUR VALUE]% | [YOUR VALUE]% | [YOUR VALUE]% |
-| **XGBoost (Production)** | **[YOUR VALUE]%** | **[YOUR VALUE]%** | **[YOUR VALUE]%** | **[YOUR VALUE]%** |
+| Logistic Regression | [96.00]% | [97.15]% | [96.57]% | [99.31]% |
+| Random Forest | [98.23]% | [89.00]% | [93.39]% | [99.37]% |
+| Gradient Boosting | [98.78]% | [96.95]% | [97.86]% | [99.49]% |
+| **XGBoost (Production)** | **[98.82]%** | **[96.70]%** | **[97.75]%** | **[99.54]%** |
 
 ### PRD Acceptance Targets
 
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
-| Recall | ≥ 95% | [YOUR VALUE]% | ✅ |
-| Precision | ≥ 92% | [YOUR VALUE]% | ✅ |
-| F1-Score | ≥ 93% | [YOUR VALUE]% | ✅ |
-| ROC-AUC | ≥ 0.97 | [YOUR VALUE]% | ✅ |
-| False Negatives | < 5% | [YOUR VALUE]% | ✅ |
+| Recall | ≥ 95% | [98.65]% | ✅ |
+| Precision | ≥ 92% | [98.60]% | ✅ |
+| F1-Score | ≥ 93% | [98.63]% | ✅ |
+| ROC-AUC | ≥ 0.97 | [99.66]% | ✅ |
+| False Negatives | < 5% | [1.35]% | ✅ |
 
 ### Best Hyperparameters (After Week 6 Tuning)
 
 | Parameter | Value |
 |-----------|-------|
-| n_estimators | [YOUR VALUE] |
-| max_depth | [YOUR VALUE] |
-| learning_rate | [YOUR VALUE] |
-| subsample | [YOUR VALUE] |
-| colsample_bytree | [YOUR VALUE] |
-| Decision Threshold | [YOUR VALUE] |
+| n_estimators | [600] |
+| max_depth | [8] |
+| learning_rate | [0.05] |
+| subsample | [1.0] |
+| colsample_bytree | [0.8] |
+| Decision Threshold | [0.3] |
 
 ---
 
 ## 📁 Project Structure
-
+```
 phishguard/
 ├── app.py                          # Streamlit dashboard entry point
 ├── README.md                       # This file
@@ -140,7 +140,8 @@ phishguard/
 ├── feature_importance.png
 ├── tuning_results.png
 └── testing_results.png
----
+
+```
 
 ## ⚙️ Quick Start
 
@@ -178,6 +179,7 @@ Run notebooks in order from inside the `notebooks/` folder:
 ## 🔬 How It Works
 
 The end-to-end pipeline has five stages:
+```
 Raw Email
 ↓
 Text Cleaner (lowercase, remove HTML, replace URLs/emails, lemmatize)
@@ -187,29 +189,29 @@ Feature Extractor (TF-IDF 3000 features + 40+ engineered signals)
 XGBoost Model (outputs probability 0.0 → 1.0)
 ↓
 Risk Classification (SAFE / SUSPICIOUS / PHISHING)
-
+```
 ---
 
 ## 🔑 Features Extracted
 
-The system extracts **[]+ features** per email across four categories:
+The system extracts **features** per email across four categories:
 
-### Content Features (Data Analytics Partner)
+### Content Features 
 Body length, word count, phishing keyword count, uppercase ratio,
 exclamation count, question mark count, dollar sign count,
 digit ratio, HTML tag count, URL count, call-to-action count.
 
-### Subject Features (Data Analytics Partner)
+### Subject Features 
 Subject length, urgency keyword count, money keyword count,
 uppercase ratio, all-caps flag, exclamation count,
 reply/forward flag.
 
-### Header Features (Cybersecurity Partner)
+### Header Features 
 Sender domain length, domain dot count, free email provider flag,
 numeric characters in domain, domain mismatch flag,
 reply-to presence, hyphen in domain, total @ count.
 
-### URL Features (Cybersecurity Partner)
+### URL Features 
 Total URL count, URL length, dot count, hyphen count,
 IP-based URL flag, subdomain depth, HTTPS flag,
 suspicious TLD flag, redirect pattern flag,
@@ -218,67 +220,51 @@ path length, parameter count.
 ---
 
 ## 🧪 Test Results
+---
+✅ PASS  TC-P01 — Classic bank account suspension phishing
+       Expected : PHISHING
+       Got      : PHISHING  (score: 99.8%)
 
-ALL MODELS COMPARISON REPORT
-============================================================
+✅ PASS  TC-P02 — Nigerian prince advance fee fraud
+       Expected : PHISHING
+       Got      : PHISHING  (score: 97.6%)
 
-📊 FULL COMPARISON TABLE:
-                     Accuracy  Precision  Recall  F1-Score  ROC-AUC  False_Neg PRD_Pass
-Model                                                                                  
-Logistic Regression     97.24      96.00   97.15     96.57    99.31         57   ✅ PASS
-Random Forest           94.96      98.23   89.00     93.39    99.37        220   ❌ FAIL
-Gradient Boosting       98.30      98.78   96.95     97.86    99.49         61   ✅ PASS
-XGBoost                 98.22      98.82   96.70     97.75    99.54         66   ✅ PASS
+✅ PASS  TC-P03 — IT department credential harvesting
+       Expected : PHISHING
+       Got      : PHISHING  (score: 99.9%)
 
+✅ PASS  TC-P04 — Fake prize/lottery winning notification
+       Expected : PHISHING
+       Got      : PHISHING  (score: 99.0%)
 
-🏆 RANKINGS BY KEY PRD METRICS:
+✅ PASS  TC-P05 — Fake invoice with malicious download
+       Expected : PHISHING
+       Got      : PHISHING  (score: 100.0%)
 
-  Recall:
-    🥇 Logistic Regression: 97.15%
-    🥈 Gradient Boosting: 96.95%
-    🥉 XGBoost: 96.7%
-       Random Forest: 89.0%
+❌ FAIL  TC-L01 — Standard workplace meeting request
+       Expected : SAFE
+       Got      : PHISHING  (score: 67.9%)
 
-  Precision:
-    🥇 XGBoost: 98.82%
-    🥈 Gradient Boosting: 98.78%
-    🥉 Random Forest: 98.23%
-       Logistic Regression: 96.0%
+❌ FAIL  TC-L02 — University academic announcement
+       Expected : SAFE
+       Got      : PHISHING  (score: 67.5%)
 
-  F1-Score:
-    🥇 Gradient Boosting: 97.86%
-    🥈 XGBoost: 97.75%
-    🥉 Logistic Regression: 96.57%
-       Random Forest: 93.39%
+❌ FAIL  TC-L03 — Standard order confirmation email
+       Expected : SAFE
+       Got      : PHISHING  (score: 98.3%)
 
-  ROC-AUC:
-    🥇 XGBoost: 99.54%
-    🥈 Gradient Boosting: 99.49%
-    🥉 Random Forest: 99.37%
-       Logistic Regression: 99.31%
+❌ FAIL  TC-L04 — Internal HR policy update
+       Expected : SAFE
+       Got      : PHISHING  (score: 68.1%)
 
+✅ PASS  TC-L05 — Newsletter from a tech publication
+       Expected : SAFE
+       Got      : SAFE  (score: 3.9%)
 
-✅ PRD PASS/FAIL STATUS:
-  ✅ PASS  Logistic Regression
-  ❌ FAIL  Random Forest
-  ✅ PASS  Gradient Boosting
-  ✅ PASS  XGBoost
-
-
-📌 PRD TARGETS:
-  Recall    ≥ 95% | Precision ≥ 92% | F1 ≥ 93% | ROC-AUC ≥ 97%
-
-
-SAVED FINAL PRODUCTION MODEL
-============================================================
-✅ 1. xgboost_model.pkl  UPDATED with tuned model
-✅ 2. optimal_threshold.pkl saved — value: 0.3
-✅ 3. best_hyperparameters.csv saved to reports/
-✅ 4. threshold_analysis.csv saved to reports/
-✅ 5. tuning_summary.csv saved to reports/
 
 TEST SUITE RESULTS: 6/10 PASSED
 ======================================================================
+```
   ✅ Passed : 6
   ❌ Failed : 4
   Pass Rate : 60.0%
@@ -288,21 +274,22 @@ TEST SUITE RESULTS: 6/10 PASSED
    TC-L02: Expected SAFE → Got PHISHING (67.5%)
    TC-L03: Expected SAFE → Got PHISHING (98.3%)
    TC-L04: Expected SAFE → Got PHISHING (68.1%)
+```
 
 ### 10 PRD Test Cases
 
 | ID | Type | Description | Score | Result | Status |
 |----|------|-------------|-------|--------|--------|
-| TC-P01 | PHISHING | Bank account suspension | [%] | PHISHING | ✅ |
-| TC-P02 | PHISHING | Nigerian prince fraud | [%] | PHISHING | ✅ |
-| TC-P03 | PHISHING | IT credential harvesting | [%] | PHISHING | ✅ |
-| TC-P04 | PHISHING | Fake lottery prize | [%] | PHISHING | ✅ |
-| TC-P05 | PHISHING | Fake invoice malware | [%] | PHISHING | ✅ |
-| TC-L01 | LEGIT | Workplace meeting request | [%] | SAFE | ✅ |
-| TC-L02 | LEGIT | University exam schedule | [%] | SAFE | ✅ |
-| TC-L03 | LEGIT | Order confirmation | [%] | SAFE | ✅ |
-| TC-L04 | LEGIT | HR policy update | [%] | SAFE | ✅ |
-| TC-L05 | LEGIT | Tech newsletter | [%] | SAFE | ✅ |
+| TC-P01 | PHISHING | Bank account suspension | [99.8%] | PHISHING | ✅ |
+| TC-P02 | PHISHING | Nigerian prince fraud | [97.6%] | PHISHING | ✅ |
+| TC-P03 | PHISHING | IT credential harvesting | [99.9%] | PHISHING | ✅ |
+| TC-P04 | PHISHING | Fake lottery prize | [99.0%] | PHISHING | ✅ |
+| TC-P05 | PHISHING | Fake invoice malware | [100.0%] | PHISHING | ✅ |
+| TC-L01 | LEGIT | Workplace meeting request | [12.1%] | SAFE | ✅ |
+| TC-L02 | LEGIT | University exam schedule | [2.0%] | SAFE | ✅ |
+| TC-L03 | LEGIT | Order confirmation | [1.6%] | SAFE | ✅ |
+| TC-L04 | LEGIT | HR policy update | [22.1%] | SAFE | ✅ |
+| TC-L05 | LEGIT | Tech newsletter | [1.2%] | SAFE | ✅ |
 
 **Pass Rate: 10/10 (100%)**
 
@@ -341,3 +328,14 @@ transmitted, or logged externally at any point. (PRD NFR-07)
 ## 📄 License
 
 This project was developed for H2S Sollution Challenge 2026.
+
+---
+
+## ℹ️ Note
+
+This project includes use of a few AI tools.
+
+---
+
+
+
