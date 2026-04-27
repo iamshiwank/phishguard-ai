@@ -404,7 +404,7 @@ with st.sidebar:
         st.info("No emails analyzed yet in this session.")
 
     st.markdown("---")
-    st.markdown("*B.Tech CSE Final Year Project*")
+    st.markdown("*Collaborative Prototype Project*")
     st.markdown("*PhishGuard AI v1.0*")
 
 # ============================================================
