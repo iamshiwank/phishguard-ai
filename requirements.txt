@@ -10,5 +10,6 @@ joblib
 scipy
 beautifulsoup4
 imbalanced-learn
-wordcloud
+wordcloud==1.9.3
 google-generativeai
+pillow==9.5.0
