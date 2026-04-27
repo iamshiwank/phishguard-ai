@@ -11,6 +11,6 @@ scipy
 beautifulsoup4
 imbalanced-learn
 wordcloud==1.9.3
-pillow==10.4.0
+pillow==9.5.0
 google-generativeai
 
