@@ -327,7 +327,7 @@ transmitted, or logged externally at any point. (PRD NFR-07)
 
 ## 📄 License
 
-This project was developed for H2S Sollution Challenge 2026.
+This project was developed for H2S Solution Challenge 2026.
 
 ---
 
