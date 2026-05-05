@@ -690,9 +690,9 @@ else:
     display_df.index   = [f"Email {i+1}" for i in range(len(display_df))]
     st.dataframe(display_df, use_container_width=True)
 
-# ============================================================
+
 # Footer
-# ============================================================
+
 st.markdown("---")
 st.markdown(
     "<div style='text-align:center; color:#4a5568; font-size:13px;'>"
