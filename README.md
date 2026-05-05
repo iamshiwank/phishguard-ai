@@ -331,10 +331,6 @@ This project was developed for H2S Solution Challenge 2026.
 
 ---
 
-## ℹ️ Note
-
-This project includes use of a few AI tools.
-
 ---
 
 
