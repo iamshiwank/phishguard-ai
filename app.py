@@ -696,7 +696,7 @@ else:
 st.markdown("---")
 st.markdown(
     "<div style='text-align:center; color:#4a5568; font-size:13px;'>"
-    "🛡️ PhishGuard AI — B.Tech CSE Final Year Project &nbsp;|&nbsp; "
+    "🛡️ PhishGuard AI — H2S Sollution Challenge 2026 &nbsp;|&nbsp; "
     "Built with XGBoost + Streamlit &nbsp;|&nbsp; "
     "All processing is local — no data is stored or transmitted"
     "</div>",
